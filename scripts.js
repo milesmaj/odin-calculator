@@ -52,18 +52,32 @@ const changeInput = (inputStr) => {
     inputVar.value = inputStr;
 }
 
+// Deletes one character from the back.
 const backspace = () => {
-    changeInput(inputVar.value.substring(0,));
+    changeInput(inputVar.value.substring(0, inputVar.value.length - 1));
 }
 
 const calculate = () => {
     let equation = inputVar.value;
 
     let arr = equation.split('');
+    let operators = [];
+    let numbers = [];
+    let tmpNum = '';
 
     for (let i = 0; i < arr.length; i++) {
         if (isNaN(parseFloat(arr[i]))) {
-            changeInput(operate(arr[i], equation.substring(0, i), equation.substring(i + 1)));
+            operators.push(arr[i]);
+            tmpNum = '';
+        } else {
+            tmpNum += arr[i];
         }
     }
+
+
+    for (let i = 0; i < operators.length; i++) {
+
+    }
 }
+
+const split 
