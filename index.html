@@ -12,37 +12,39 @@
 <body>
     <main>
         <div>
-            <input type="text" id="current" />
+            <form onsubmit="event.preventDefault(); calculate()">
+                <input type="text" id="current" />
+            </form>
         </div>
         <div>
-            <button onclick="clear()">AC</button>
+            <button onclick="changeInput('')">AC</button>
             <button>()</button>
-            <button>%</button>
-            <button>÷</button>
+            <button onclick="enterCh('%')">%</button>
+            <button onclick="enterCh('/')">÷</button>
         </div>
         <div>
-            <button onclick="enterNum(7)">7</button>
-            <button onclick="enterNum(8)">8</button>
-            <button onclick="enterNum(9)">9</button>
-            <button>×</button>
+            <button onclick="enterCh(7)">7</button>
+            <button onclick="enterCh(8)">8</button>
+            <button onclick="enterCh(9)">9</button>
+            <button onclick="enterCh('*')">×</button>
         </div>
         <div>
-            <button onclick="enterNum(4)">4</button>
-            <button onclick="enterNum(5)">5</button>
-            <button onclick="enterNum(6)">6</button>
-            <button>-</button>
+            <button onclick="enterCh(4)">4</button>
+            <button onclick="enterCh(5)">5</button>
+            <button onclick="enterCh(6)">6</button>
+            <button onclick="enterCh('-')">-</button>
         </div>
         <div>
-            <button onclick="enterNum(1)">1</button>
-            <button onclick="enterNum(2)">2</button>
-            <button onclick="enterNum(3)">3</button>
-            <button>+</button>
+            <button onclick="enterCh(1)">1</button>
+            <button onclick="enterCh(2)">2</button>
+            <button onclick="enterCh(3)">3</button>
+            <button onclick="enterCh('+')">+</button>
         </div>
         <div>
-            <button onclick="enterNum(0)">0</button>
+            <button onclick="enterCh(0)">0</button>
             <button>.</button>
-            <button>←</button>
-            <button>=</button>
+            <button onclick="backspace()">←</button>
+            <button onclick="calculate()">=</button>
         </div>
     </main>
     <script src="scripts.js"></script>
