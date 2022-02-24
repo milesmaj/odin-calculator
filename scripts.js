@@ -1,4 +1,7 @@
-const inputVar = document.getElementsByTagName('input')[0];
+const inputVar = document.getElementsByTagName('p')[0];
+
+let numbers = [0, 0];
+let operator = '';
 
 // Adds two numbers.
 const add = (x, y) => {
@@ -43,41 +46,51 @@ const operate = (operator, x, y) => {
 }
 
 // Function to add number to input.
-const enterCh = (num) => {
-    inputVar.value += num;
+const enterNum = (num) => {
+    inputVar.innerText += num;
+    if (operator == '') {
+        numbers[0] += '' + num;
+    } else {
+        numbers[1] += '' + num;
+    }
+    console.log(numbers);
+}
+
+// Function to add operators.
+const enterOp = (op) => {
+    if (operator != '') {
+        calculate();
+
+    }
+    operator = op;
+    changeInput('');
 }
 
 // Function to change input.
 const changeInput = (inputStr) => {
-    inputVar.value = inputStr;
+    inputVar.innerText = inputStr;
 }
 
 // Deletes one character from the back.
 const backspace = () => {
-    changeInput(inputVar.value.substring(0, inputVar.value.length - 1));
+    changeInput(inputVar.innerText.substring(0, inputVar.innerText.length - 1));
 }
 
+// Calculate the numbers.
 const calculate = () => {
-    let equation = inputVar.value;
-
-    let arr = equation.split('');
-    let operators = [];
-    let numbers = [];
-    let tmpNum = '';
-
-    for (let i = 0; i < arr.length; i++) {
-        if (isNaN(parseFloat(arr[i]))) {
-            operators.push(arr[i]);
-            tmpNum = '';
-        } else {
-            tmpNum += arr[i];
-        }
-    }
-
-
-    for (let i = 0; i < operators.length; i++) {
-
+    if (operator == '') {
+        changeInput(numbers[1]);
+    } else {
+        let result = operate(operator, numbers[0], numbers[1]);
+        changeInput(result);
+        operator = '';
+        numbers[0] = result;
+        numbers[1] = 0;
     }
 }
 
-const split 
+const clearAll = () => {
+    changeInput('');
+    numbers = [0, 0];
+    operator = '';
+}
